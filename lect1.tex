@@ -1,0 +1,45 @@
+\section{Introduction}
+\subsection{Stern–Gerlach experiment }
+Suppose particles can be either black or white and we have some tool which can measure a color of particles. Additional, suppose, particles have additional property ''hardness` `- and we can measure whether particles are hard or soft.
+
+The properties are consistent - i.e.\ it doesn't matter how many times you measure it one after other, you get the same result. Also, hardness and color are independent - if you measure hardness, you get either white or black with same probability.
+
+The experiment itself is measuring color, then hardness, and then color again. Even though we input only white particles into hardness measuring tool, the output of second color measurement is either white or black with equal probability.
+
+\paragraph{Principles of quantum mechanics}
+\begin{enumerate}
+	\item Particle is described with normalized vector in complex space of physical states.
+	
+	In our example, the space is 2D - black/white and hard/soft.
+	\item Given system in (normalized) state $\vec{v}_1$, probability that it will be in state $\vec{v}_2$ is
+	$$P = \left|\vec{v}_2 \cdot \vec{v}_1 \right|^2$$
+	
+	So, in our example, suppose $\hat{w}$ and $\hat{b}$ are orthogonal basis of our space. Since we know that 
+	$$\begin{cases}
+	\left|\vec{w} \cdot\vec{s}\right|^2 = \frac{1}{2}\\
+	\left|\vec{b} \cdot\vec{s}\right|^2 = \frac{1}{2}\\
+	\end{cases}$$
+	We know that angle with both axis of $\vec{s}$ is $\frac{\pi}{4}$. We can choose any of 4 possibilities. Lets choose $\hat{s} = \frac{\hat{w} - \hat{b}}{\sqrt{2}}$ and since $\hat{h}$ is orthogonal, $\hat{h} = \frac{\hat{w} + \hat{b}}{\sqrt{2}}$.
+\item Each measurement can be characterized with Hermitian operator, whose eigenvalues are outcomes of measurements and corresponding eigenvectors are states after the measuremnts.
+\end{enumerate}
+
+	
+Now we can predict the results of opposite experiment - if we measure hardness of white particle, it will be hard with probability $\frac{1}{2}$. Now the probability that resulting hard particle will be measured to be white, is also $\frac{1}{2}$.
+
+In quantum mechanics we use bra ket notation: vector is denoted $\ket{b}$ (conjugate transposed vector is denoted as $\bra{w}$):
+$$\ket{h} = \frac{1}{\sqrt{2}} \ket{b} +  \frac{1}{\sqrt{2}} \ket{w}$$
+\paragraph{Example}
+Suppose we have a particle 
+$$\ket{\Psi} = \frac{1}{\sqrt{3}} \ket{w} + \sqrt{\frac{2}{3}} \ket{b} $$
+Then probability that it will be measured as white
+$$P(w) = \left|\braket{w}{\Psi}\right|^2 = \left|\frac{1}{\sqrt{3}}\braket{w}{w} + \sqrt{\frac{2}{3}}\braket{w}{b}\right|^2 = \frac{1}{3} $$
+If measure hardness:
+$$P(h) = \left|\braket{h}{\Psi}\right|^2 = \left|\left(\frac{1}{\sqrt{2}} \ket{b} +  \frac{1}{\sqrt{2}} \ket{w}\right)\left(\frac{1}{\sqrt{3}} \ket{w} + \sqrt{\frac{2}{3}} \ket{b} \right)\right|^2 = \left| \frac{1}{\sqrt{3}} + \frac{1}{\sqrt{6}}\right| \approx 0.3$$
+\section{Linear algebra}
+\paragraph{Linear operator}
+In quantum mechanics we write operators as multiplication of vectors. For example for
+$$R = \begin{pmatrix}0&-1\\1&0\end{pmatrix}$$
+we write
+$$R = - \op{w}{b} + \op{b}{w}$$
+And then
+$$R\ket{\Psi} = - \ket{w}\braket{b}{\Psi} + \ket{b}\braket{w}{\Psi} = - \braket{b}{\Psi}\ket{w} + \braket{w}{\Psi} \ket{b}$$

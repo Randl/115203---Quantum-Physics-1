@@ -1,0 +1,63 @@
+For example
+$$R\ket{s}= \ket{b}\braket{w}{s}-\ket{w}\braket{b}{s}=\ket{b}\frac{1}{\sqrt{2}}+ \ket{w}\frac{1}{\sqrt{2}} = \ket{h}$$
+
+\paragraph{Examples}
+\begin{itemize}
+	\item $$W = \op{w}{b} + \op{w}{w}$$
+	\item $$T = \op{h}{b} + \op{s}{w}$$
+	\item $$Q = 2\op{w}{w} + 3\op{b}{b}$$
+	This is not unitary operator, since in doesn't conserves norm.
+\end{itemize}
+
+\paragraph{Basis change}
+To change from basis to basis we just substitute the values of old basis in a new one:
+$$T = \ket{h} \left(\frac{1}{\sqrt{2}}\bra{h} - \frac{1}{\sqrt{2}}\bra{s}\right) + \ket{s} \left(\frac{1}{\sqrt{2}}\bra{h} + \frac{1}{\sqrt{2}}\bra{s}\right) =  \frac{1}{\sqrt{2}}\op{h}{h} - \frac{1}{\sqrt{2}}\op{h}{s} + \frac{1}{\sqrt{2}}\op{s}{h} + \frac{1}{\sqrt{2}}\op{s}{s}$$
+
+\paragraph{Hermitian operators}
+We want to build an operator $C$ such that for state $\ket{\psi}$ it will return us the average of $\psi$:
+$$\braket{\psi|C}{\psi} = \langle \psi \rangle$$
+If we give a value of $-1$ to white and value of $1$ to black:
+$$\mel{\psi}{C}{\psi} = -1 \cdot P(\psi = w) + 1 \cdot P(\psi = b) = - \abs{\braket{w}{\psi}}^2 + \abs{\braket{b}{\psi}}^2 = -\braket{\psi}{w}\braket{w}{\psi}+\braket{\psi}{b}\braket{b}{\psi}$$
+Thus
+$$C = -\op{w}{w}+\op{b}{b}$$
+
+For example, for $\psi = \frac{1}{\sqrt{3}}\ket{w} + \sqrt{\frac{2}{3}}\ket{b}$:
+$$\mel{\psi}{C}{\psi} = \bra{\psi} \left( -\op{w}{w}+\op{b}{b} \right)\left( \frac{1}{\sqrt{3}}\ket{w} + \sqrt{\frac{2}{3}}\ket{b} \right) = \bra{\psi} \left(-\frac{1}{\sqrt{3}}\ket{w} + \sqrt{\frac{2}{3}}\ket{b}\right) = \frac{1}{3}$$
+
+
+\paragraph{Additional example}
+Suppose we have two properties - color and temperature. Possible values are red, green, blue for color and hot, lukewarm, cold for temperature.
+
+If we measure temperature of red or green particle we get lukewarm of hot with equal probability. If we measure temperature of blue particle we get cold surely.
+
+How can we write $\ket{b}$, $\ket{g}$, $\ket{r}$ in basis of $\ket{c}$, $\ket{l}$, $\ket{h}$?
+
+From first experiment
+$$\ket{r} =  \frac{1}{\sqrt{2}} \ket{l} + \frac{1}{\sqrt{2}} \ket{h} $$
+$$\ket{g} =   \frac{1}{\sqrt{2}} \ket{l} - \frac{1}{\sqrt{2}} \ket{h} $$
+
+Note that we need minus since else we'd get $\braket{g}{r} = 1$.
+From last experiment
+$$\ket{b}= \ket{c}$$
+
+Lets denote $h=1$, $l=0$, $c=-1$ and build temperature operator. It's characterized by
+$$\begin{cases}
+T\ket{h} = \ket{h}\\
+T\ket{l} = 0\\
+T\ket{c} = -\ket{c}
+\end{cases}$$
+And thus an operator is
+$$T = \op{h}{h} - \op{c}{c}$$
+
+Now let's calculate temperature of state $\ket{g}$:
+$$\mel{g}{T}{g} = \left(\frac{1}{\sqrt{2}} \ket{l} - \frac{1}{\sqrt{2}} \ket{h}\right)T \left(\frac{1}{\sqrt{2}} \ket{l} - \frac{1}{\sqrt{2}} \ket{h} \right) = \frac{1}{2}  \left(\ket{l} -\ket{h}\right)T \left( \ket{l} -\ket{h} \right) =-\frac{1}{2}  \left(\ket{l} -\ket{h}\right)\ket{h} = \frac{1}{2}  $$
+
+We can also calculate variance:
+$$\sigma^2 = \mel{g}{T^2}{g} - \big(\mel{g}{T}{g}\big)^2$$
+
+\paragraph{Example}
+We have a particle can be at one of five points. So possible states are $\ket{1}$,$\ket{2}$,$\ket{3}$,$\ket{4}$,$\ket{5}$.
+
+If we want to describe a particle on finite 1D interval, we'll divide it into $N$ equal intervals of length $a$. We are interested in $a \to 0$, thus number of dimensions goes to infinity.
+
+\paragraph{double slit experiment}
