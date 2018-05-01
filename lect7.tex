@@ -1,0 +1,87 @@
+\paragraph{Diagonal Hamiltonian}
+If Hamiltonian is diagonal, we get very simple system of DEs:
+$$\dv{v_i}{t} = m_iv_i$$
+
+To diagonalize Hamiltonian we want to solve eigenvalue problem which is called time-independent Shr\"{o}dinger equation:
+$$H\ket{E_i} = E_i \ket{E_i}$$
+As soon we have the solution we can rewrite $H$ in eigenbasis:
+$$H = \sum_i E_i \dyad{E_i}{E_i}$$
+Substituting
+$$i\hbar \pdv{t} \ket{\psi} = \sum_k E_k \ket{E_k}\braket{E_k}{\psi}$$
+$$i\hbar \pdv{t} \braket{E_j}{\psi} = -\frac{i}{\hbar} \sum_k E_k \braket{E_j}{E_k} \braket{E_k}{\psi}$$
+$$ \pdv{t} \braket{E_j}{\psi} = -\frac{i}{\hbar} E_j \braket{E_j}{\psi}$$
+This is equation which we can solve
+$$\braket{E_j}{\psi} = c_j e^{-\frac{iE_j}{\hbar}t}$$
+We can rewrite $\psi$ as
+$$\ket{\psi} = \sum_k \ket{E_k} \braket{E_k}{\psi} = \sum_k c_ke^{-\frac{iE_k}{\hbar}t} \ket{E_k}$$
+we can find $c_k$ from initial conditions
+$$c_k = \braket{E_j}{\psi(0)}$$
+
+Note that if $\ket{\psi(0)} = \ket{E_j}$, then 
+$$\ket{\psi(t)} = e^{-\frac{iE_j}{\hbar}t}\ket{E_j}$$
+What is probability to be in state $\ket{E_k}$ at time $t$?
+$$P(\ket{\psi(t)} = \ket{E_k}) = \abs{\braket{E_k}{\psi(t)}}^2 = \abs{e^{-\frac{iE_j}{\hbar}t}\braket{E_k}{E_j}}^2 = \delta_{kj}$$
+Thus eigenstates of Hamiltonian are called stationary states.
+\paragraph{Example}
+Suppose we have
+$$\begin{cases}
+H\ket{b} = 0\ket{b}\\
+H\ket{w} = E_\omega \ket{w}
+\end{cases}$$
+Suppose that $\ket{\psi(0)} = \ket{h} = \frac{1}{\sqrt{2}}\ket{b}+\frac{1}{\sqrt{2}}\ket{w}$. What is probability to measure $\ket{h}$ at time $t$?
+We know the solution of Schr\"{o}dinger equation is
+$$\ket{\psi} = c_be^{-\frac{i \cdot 0}{\hbar}t}\ket{b}+c_we^{-\frac{i\cdot E_\omega}{\hbar}t}\ket{w}$$
+From initial conditions $c_b=c_w = \frac{1}{\sqrt{2}}$:
+$$\ket{\psi} = \frac{1}{\sqrt{2}}\ket{b}+\frac{1}{\sqrt{2}}e^{-\frac{i\cdot E_\omega}{\hbar}t}\ket{w}$$
+Then
+$$P(\ket{\psi(t)} = \ket{h}) = \abs{\qty(\frac{1}{\sqrt{2}}\ket{b}+\frac{1}{\sqrt{2}}e^{-\frac{i\cdot E_\omega}{\hbar}t}\bra{w})\qty(\frac{1}{\sqrt{2}}\bra{b}+\frac{1}{\sqrt{2}}\ket{w})}^2 = \abs{\frac{1}{2} + \frac{1}{2} e^{-\frac{iE_\omega}{\hbar}t} }^2 = \frac{1}{2} \qty(1+ \cos(\frac{E_\omega t}{\hbar}))$$
+\paragraph{Free particle in 1D}
+$$H = \frac{P^2}{2m}$$
+In classical system $X = \frac{P}{m}t$ and $P=\text{const}$.
+
+We want to find eigenvalues of 
+$$\frac{P^2}{2m} \ket{E} = E\ket{E}$$
+In location representation:
+$$\mel{x}{\frac{P^2}{2m}}{E} = E\braket{x}{E}$$
+In addition, from definition of $P$,
+$$\mel{x}{P}{f} = -i\hbar \pdv{x} f(x)$$
+Denote $\psi_E(x) = \braket{x}{E}$. We get
+$$\frac{1}{2m} \qty(-i\hbar \pdv{t})^2 \psi_E(x)  = E\psi_E(x)$$
+We get
+$$\pdv[2]{x} \psi_E(x)  = -\frac{2mE}{\hbar^2} \psi_E(x)$$
+For $E>0$ we get
+$$\psi_{E,\pm}(x) = c_{\pm} e^{\pm \frac{i\sqrt{2mE}}{\hbar}x}$$
+If $E<0$
+$$\psi_{E,\pm}(x) = c_{\pm} e^{\pm \frac{-\sqrt{2mE}}{\hbar}x}$$
+those states are not physical, since they diverge in infinity.
+\subparagraph{Algebraic solution}
+We search for
+$$P\ket{p} = p\ket{p}$$
+Since $P=\hbar K$ and we know eigenstates of $k$:
+$$K\ket{k} = k\ket{k}$$
+Thus
+$$\ket{p} = C\ket{k}$$
+From
+$$\braket{p}{p'} = \delta(p-p')$$
+we can find $C$ and get
+$$\ket{p} = \frac{1}{\sqrt{\hbar}} \ket{k}$$
+
+Now
+$$\frac{P^2}{2m}\ket{p} = \frac{p^2}{2m}\ket{p}$$
+Thus $E=\frac{p^2}{2m}$ and eigenvalues are $\ket{p}$.
+
+To check whether this is the same solution, we calculate
+$$\braket{x}{p} = \mel{x}{\frac{1}{\sqrt{\hbar}}}{k} = \frac{1}{\sqrt{\hbar}}\braket{x}{k} = \frac{1}{\sqrt{\hbar}} \frac{1}{\sqrt{2\pi}} e^{ikx} = \frac{1}{\sqrt{2\pi \hbar}}  e^{\frac{ipx}{\hbar}}$$
+
+Now we can get the solution
+$$\ket{\psi(t)} = \sum_k c_k e^{-\frac{iE_k}{\hbar}t} \ket{E_k} $$
+In our case
+$$\ket{\psi(t)} = \int_{-\infty}^\infty \dd{p} c(p) e^{-\frac{i\frac{p^2}{2m}}{\hbar}t} \ket{p} $$
+$$\braket{x}{\psi(t)} =  \int_{-\infty}^\infty \dd{p} c(p) e^{-\frac{i\frac{p^2}{2m}}{\hbar}t} \braket{x}{p}$$
+$$\psi(x,t) =  \frac{1}{\sqrt{2\pi \hbar}}\int_{-\infty}^\infty \dd{p} c(p) e^{-\frac{i\frac{p^2}{2m}}{\hbar}t} e^{-\frac{ipx}{\hbar}} = \frac{1}{\sqrt{2\pi \hbar}} \int \dd{p} c(p) e^{i\frac{px - \omega(p) t}{\hbar}}$$
+where $\omega(p) = \frac{p^2}{2m}$. 
+	
+We know that
+	$$\psi(x,0) = \frac{1}{\sqrt{2\pi \hbar}} \int_{-\infty}^\infty \dd{p} c(p) e^{\frac{ipx}{\hbar}} $$
+Applying inverse Fourier transform
+	$$c(p) = \frac{1}{\sqrt{2\pi \hbar}} \int_{-\infty}^\infty \dd{x} \psi(x,0) e^{-\frac{ipx}{\hbar}} $$

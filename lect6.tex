@@ -1,0 +1,74 @@
+\subsection{Fourier transform operator}
+Define space with basis $\ket{x}$ such that $\braket{x}{f} = f(x)$ and $\braket{x}{x'} = \delta(x-x')$
+Define identity operator
+$$I = \int \dyad{x}{x} \dd{x}$$
+Define also operator $K$ such that
+$$\mel{x}{K}{f} = - i\pdv{f}{x}$$
+$K$ is Hermitian if $\eval{f \vdot g}_a^b = 0$ for any $f$,$g$.
+
+It's eigenvalues $k$ are such that
+$$\braket{x}{k} = \frac{1}{\sqrt{2\pi}} e^{ikx}$$
+Also for $f$
+$$\ket{f} = \int f(x) \ket{x} \dd{x} = \int \hat{f} (k) \ket{k} \dd{k} $$
+when
+$$\braket{k}{f} = \hat{f}(k)$$
+
+Define operator $X$ such that $X\ket{x} = x\ket{x}$. Obviously, $X$ is Hermitian.
+$$\mel{x}{X}{f} = \qty(\mel{f}{X^\dagger}{x})^* =  \qty(\mel{f}{X}{x})^* = \qty(x\braket{f}{x})^* = x^* \braket{x}{f} = xf(x) $$
+
+Lets calculate $\comm{X}{K}$:
+$$\mel{x}{XK}{f} = \mel{x}{XIK}{f} = \int \mel{x}{X}{x'} \mel{x'}{K}{f} \dd{x'} = \int x'\delta(x-x') \qty(-i\pdv{f}{x'}) \dd{x'} = -ix \pdv{f}{x}$$
+Now
+$$\mel{x}{KX}{f} = \int \mel{x}{K}{x'} \mel{x'}{X}{f} \dd{x'} = \int -i \delta(x-x') \pdv{x'} \qty(x'f(x)) \dd{x'} = -i \pdv{x}\qty(xf(x)) = -if(x) -ix\pdv{f}{x}  $$
+Thus
+$$\mel{x}{\comm{X}{K}}{f} = -ix\pdv{f}{x} - \qty(-if(x) - ix\pdv{f}{x}) = if(x) = i\mel{x}{I}{f}$$
+i.e.
+$$\comm{X}{K} = iI$$
+
+We suppose that our space is complete (i.e. each Cauchy sequence converges). Complete inner product space is called Hilbert space.
+
+\section{Quantum mechanics principles}
+\begin{enumerate}
+	\item Physical state is described by vector $\ket{\psi}$ in Hilbert space
+	\item Given state $\ket{\psi}$, probability to measure it in state $\varphi$ is
+	$$P = \frac{\abs{\braket{\varphi}{\psi}}^2}{\braket{\varphi}{\varphi} \braket{\psi}{\psi}}$$
+	\item Measurable quantities are described by Hermitian operator $\Omega$:
+	\begin{enumerate}
+		\item Result of measurement is one of eigenvalues of $\Omega$
+		\item A state corresponding to measurement of value $\omega$ is $\ket{\omega}$.
+		\item After measurements, the state will be corresponding eigenvector
+	\end{enumerate} 
+	\item Given state $\psi$ at $t=0$, a state at time $t$ is given by following PDE:
+	$$i\hbar \pdv{t} \ket{\psi}  = H\ket{\psi}$$ 
+	which is called Schr\"{o}dinger equation
+\end{enumerate}
+
+\paragraph{Position and momentum operators}
+Position operator is $X$ and momentum operator $P = \hbar K$.
+\paragraph{Consequences of principles}
+\begin{enumerate}
+	\item Particle on line is described with vector in infinite-dimensional space.
+	\item If $\ket{\psi}$ and $\ket{\varphi}$ are physical states, $\ket{\varphi} + \ket{\psi}$ is physical state too.
+	\item It's impossible to predict results of measurements, only probability of results.
+	\item Norm of the vector is not important, since we always can normalize them.
+	\item Results of measurements of $\Omega$ are only $\omega_i$.
+	\item If $\ket{\psi} = \ket{\omega}$, such that $\Omega \ket{\omega} = \omega\ket{\omega}$ then measurement of $\Omega$ will always give $\omega$.
+	\item Classical physical quantity which depends on $x$ and $p$, its quantum analogue is same function of operators $X$ and $P$: 
+	$$\Omega(x,p) \Rightarrow \Omega(X,P)$$
+	The order is important, since $\comm{X}{P} \neq 0$. Some operators are defined only in quantum case, e.g. $\Omega = \comm{X}{P}$. Thus the right way to proceed is to define quantum quantities and then to check what happens in classical limit.
+	\item If there is degeneracy, i.e., some eigenvalue of the operator has multiple eigenvectors, the probability is a sum of probabilities:
+	$$P = \abs{\braket{\omega,1}{\psi}}^2 + \abs{\braket{\omega,2}{\psi}}^2$$
+\end{enumerate}
+\paragraph{Expectation and variance of measurement}
+Expectation of measurement can be calculated as
+$$\mel{\psi}{\Omega}{\varphi} = \sum_i \omega_i P_\psi(\omega)$$
+and variance
+$$(\Delta \Omega)^2 = \mel{\psi}{\qty(\Omega - \mel{\psi}{\Omega}{\psi})^2}{\psi} =  \mel{\psi}{\Omega^2 - \qty(\mel{\psi}{\Omega}{\psi})^2}{\psi}$$
+\subsection{Schr\"{o}dinger equation}
+\paragraph{Examples of Hamiltonian}
+For free particle
+$$H = \frac{P^2}{2m}$$
+For harmonic oscillator
+$$H = \frac{P^2}{2m} + \frac{1}{2}\omega^2 X^2$$
+
+Suppose Hamiltonian is independent on time. We want to diagonalize Hamiltomnian.
