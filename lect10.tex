@@ -1,0 +1,92 @@
+Note that
+$$\norm{a\ket{n}} =\mel{n}{a^\dagger a}{n} = \mel{n}{N}{n} = n$$
+Thus, if $n=0$, $\norm{a\ket{n}} = 0$, denote this vector as $\ket{0}$ (note that $\norm{\ket{0}}\neq0 $).
+
+Let's show that $a^\dagger \ket{n} \neq 0$. Suppose  exists such $\ket{n}$: 
+$$a^\dagger \ket{n} = 0$$
+$$aa^\dagger  \ket{n} = 0$$
+
+For that, calculate
+$$\comm{a}{ a^\dagger} = \comm{\sqrt{\frac{m\omega}{2\hbar}} X +i\frac{1}{\sqrt{2m\omega\hbar}} P}{ \sqrt{\frac{m\omega}{2\hbar}} X -i\frac{1}{\sqrt{2m\omega\hbar}} P} = \sqrt{\frac{m\omega}{2\hbar}}i\frac{1}{\sqrt{2m\omega\hbar}} \qty( \comm{X}{-P}+\comm{P}{X}) = \frac{i}{2\hbar} (-2i\hbar) = 1$$
+
+
+Then
+$$aa^\dagger = a^\dagger a + 1 = N+1$$
+
+i.e.,
+$$(N+1)\ket{n} = (n+1)\ket{n} = 0$$
+That means $n=-1$, however $n\geq 0 $.
+
+Lets show that $a^\dagger \ket{n}$ and $a \ket{n} \neq 0 $ are eigenvectors of $N$.
+
+$$Na^\dagger \ket{n} = a^\dagger a a^\dagger \ket{n} = a^\dagger (a^\dagger a+1)\ket{n} = a^\dagger (N+1)\ket{n}= a^\dagger(n+1)\ket{n} = (n+1)a^\dagger \ket{n}$$
+We got
+$$a^\dagger \ket{n}\propto \ket{n+1}$$
+
+For $a\ket{n}$:
+$$Na^\dagger a a \ket{n} = (aa^\dagger -1) a \ket{n} = (aa^\dagger a - a)\ket{a} = a(N-1)\ket{n}= a(n-1)\ket{n} $$
+i.e.,
+$$a\ket{n} \propto \ket{n-1}$$
+
+We can conclude there doesn't exist $0<n<1$, because then $a\ket{n} \propto \ket{n-1}$ and $N\ket{n-1} = (n-1)\ket{n-1}$ and $n-1<0$ in contradiction.
+
+By induction or just by looking on $a^m\ket{n}$ we can show same for any non-integer $n$.
+
+However for integer $n$, we get 0 at some point, and thus there is no contradiction. And for each $m$, $\qty(a^\dagger)^m \ket{n} = \ket{n+m}$.
+
+We found the spectrum of $N$ and
+$$H = \hbar \omega \qty(N+\frac{1}{2})$$
+Thus
+$$H\ket{n} = \hbar \omega \qty(n+\frac{1}{2})\ket{n}$$
+And states $\ket{n}$ are eigenvalues of $H$ with eigenvalues $\hbar \omega \qty(n+\frac{1}{2})$ i.e., energy are discrete.
+
+We want to find
+$$\psi_n(x) = \braket{x}{n}$$
+First of all we want to find $\psi_0(x) = \braket{x}{0}$. ($\ket{0}$ is called ground state, $\ket{1}$ is called first excited state, etc.)
+
+Since $a\ket{0}=0$,
+$$\mel{x}{a}{0} = 0$$
+$$\mel{x}{\sqrt{\frac{m\omega}{2\hbar}} X +i\frac{1}{\sqrt{2m\omega\hbar}} P}{0} = 0$$
+$$\sqrt{\frac{m\omega}{2\hbar}}x\psi_0(x) +i\frac{1}{\sqrt{2m\omega\hbar}} \qty(-i\hbar \pdv{x}) \psi_0(x)= 0$$
+$$\qty(\sqrt{\frac{m\omega}{\hbar}} x + \frac{1}{\sqrt{\frac{m\omega}{2\hbar}} X +i\frac{1}{\sqrt{2m\omega\hbar}} P}\pdv{x})bb\psi_0(x) = 0$$
+Define $y=\sqrt{\frac{m\omega}{\hbar}}x$ and $\tilde{\psi}_0(y) = \psi_0(x)$:
+$$\qty(y+\pdv{y}) \tilde{\psi}_0(y) = 0$$
+$$\pdv{\tilde{\psi}_0}{y} = -y$$
+$$\ln \tilde{\psi}_0 = -\frac{1}{2} y^2 + C$$
+$$\tilde{\psi}_0 = C e^{-\frac{1}{2} y^2 }$$
+$$\psi_0(x)  = C e^{-\frac{m\omega x^2}{2\hbar}}$$
+From normalization requirement, $C = \qty(\frac{m\omega}{\pi \hbar})^{\frac{1}{4}}$ (Gaussian integral).
+
+To find $\psi_n(x) = \braket{x}{n}$ we use the fact $(a^\dagger)^n \ket{0} \propto \ket{n}$.
+For that we need the constant  factor:
+$$1 = \braket{n+1}{n+1} = \frac{\mel{n}{aa^\dagger}{n}}{\abs{C_n}^2} = \frac{\mel{n}{N+1}{n}}{\abs{C_n}^2} = \frac{n+1}{\abs{C_n}^2}  $$
+
+Since we have freedom of choice of phase, we can choose $C_n = \sqrt{n+1}$.
+
+Thus
+$$\psi_n(x) = \mel{x}{\frac{\qty(a^\dagger)^n}{\sqrt{n!}}}{0}$$
+Substituting
+$$\psi_n(x) =\frac{1}{\sqrt{n!}}\qty(\sqrt{\frac{m\omega}{2\hbar}} X +i\frac{1}{\sqrt{2m\omega\hbar}} P)^n \psi_0(x)$$
+$$\tilde{\psi}_n(y) = \frac{1}{\sqrt{n!}} \qty(\frac{1}{\sqrt{2}}\qty(y-\pdv{y}))^n \tilde{\psi}_0(y)$$
+
+Define $\tilde{H}_n$ such that
+$$\tilde{\psi}_n(y) = \frac{1}{\sqrt{2^nn!}} \tilde{\psi_0}(y) \tilde{H}_n(y)$$
+i.e.,
+$$\tilde{H}_n(y) = \frac{1}{\tilde{\psi}_0(y)} \qty(y-\pdv{y})^n\tilde{\psi}_0(y)$$
+$$\tilde{H}_n(y) = e^{\frac{1}{2}y^2} \qty(y-\pdv{y})^n  e^{-\frac{1}{2}y^2} $$
+
+\paragraph{Values of $\tilde{H}_n$}
+$$\tilde{H}_0(y) = 1$$
+$$\tilde{H}_1(y) = e^{\frac{1}{2}y^2} \qty(y-\pdv{y})  e^{-\frac{1}{2}y^2} = y + y e^{\frac{1}{2}y^2}e^{-\frac{1}{2}y^2} = 2y $$
+
+i.e., we found general expression:
+$$\psi_n(x) = \frac{1}{\sqrt{2^nn!}} \tilde{H}_n\qty(\sqrt{\frac{m\omega}{\hbar}}x)\qty(\frac{m\omega}{\pi \hbar})^{\frac{1}{4}}e^{-\frac{m\omega x^2}{2\hbar}}$$
+
+For initial state we rewrite
+$$\psi(x,0) = \sum_n c_n \psi_n(x)$$
+and from normalization
+$$\int_{-\infty}^{\infty} \dd{x} \psi^*_{n'} (x) \psi_n(x)  = \braket{n}{n'} = \delta_{nn'}$$
+we get
+$$c_n = \int_{-\infty}^\infty \dd{x} \psi^*(x) \psi(x,0)  $$
+And we get
+$$\psi(x,t) = \sum_n c_n e^{-\frac{i(\hbar \omega \qty(n+\frac{1}{2}))t}{\hbar}} \psi_n(x)$$
