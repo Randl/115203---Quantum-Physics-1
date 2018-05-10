@@ -1,0 +1,80 @@
+
+\paragraph{Uncertainty principle}
+For operator $\Omega$ and state $\ket{\psi}$ average measured value of $\Omega$ is
+$$\expval{\Omega} = \mel{\psi}{\Omega}{\psi}$$
+And the variance of measurements is
+$$\Delta \Omega^2 = \mel{\psi}{\qty\big(\Omega - \mel{\psi}{\Omega}{\psi})^2}{\psi} = \expval{\qty\big(\Omega - \expval{\Omega})^2}$$ 
+In classical systems we can assume $\Delta \Omega$ is arbitrary small. In quantum system, if $\ket{\psi}$ is eigenvector of $\Omega$, $\Delta \Omega = 0$.
+
+We'll show that for $\Omega$ and $\Lambda$ such that $\comm{\Omega}{\Lambda} = i \Gamma$ for hermitian $\Gamma$
+$$\Delta \Omega^2 \Delta \Lambda^2 \geq \frac{1}{4} \expval{\Gamma}^2$$
+
+In particular, for $\comm{X}{P} = i\hbar I$
+$$\Delta X \delta P \geq \frac{\hbar}{2}$$
+\subparagraph{Proof}
+First lets show that for hermitian  $\Omega$ and $\Lambda$, $\Gamma$ is hermitian.
+$$\comm{\Omega}{\Lambda}^\dagger = \qty(\Omega\Lambda - \Lambda\Omega)^2 = \Lambda^\dagger \Omega^\dagger - \Omega^\dagger \Lambda^\dagger = \comm{\Lambda^\dagger}{\Omega^\dagger} = -\comm{\Omega^\dagger}{\Lambda^\dagger}$$
+i.e., $\comm{\Omega}{\Lambda}$ is antihermitian.
+Define
+$$\begin{cases}
+\delta \Omega= \Omega - I\expval{\Omega}\\
+\delta \Lambda= \Lambda - I\expval{\Lambda}\\
+\end{cases}$$
+$$\Delta \Omega^2 = \mel{\psi}{\delta \Omega^2}{\psi} = \mel{\psi}{\delta \Omega^\dagger \delta \Omega}{\psi}  = \braket{\delta \Omega\psi}{\delta \Omega\psi}$$
+$$\Delta \Omega^2 \Delta \Lambda^2  = \braket{\delta \Omega\psi}{\delta \Omega\psi}\braket{\delta \Lambda\psi}{\delta \Lambda\psi}$$
+From Schwartz inequality ($\braket{\psi}{\psi} \braket{\phi}{\phi} \geq \abs{\braket{\psi}{\phi}}^2$):
+$$\Delta \Omega^2 \Delta \Lambda^2  \geq \abs{\braket{\delta \Omega\psi}{\delta \Lambda\psi}}^2 = \abs{\mel{\psi}{\Delta \Omega \delta \Lambda}{\psi}}^2$$
+Now we can rewrite any multiplication of operators as
+$$AB = \frac{1}{2} (AB+BA) + \frac{1}{2}(AB-BA) =\frac{1}{2} (AB+BA) + \frac{1}{2}\comm{A}{B} $$
+We get, from
+$$\comm{\delta \Omega}{\delta \Lambda} = \comm{\Omega}{\Lambda}$$
+$$\Delta \Omega^2 \Delta \Lambda^2  \geq \frac{1}{4}\abs{\mel{\psi}{\delta \Omega + \delta \Lambda}{\psi}+ i \mel{\psi}{\Gamma}{\psi}}^2$$
+Since $\delta \Omega + \delta \Lambda$ is hermitian, its eigenvalues are real, and so are eigenvalues of $\Gamma$.
+$$\Delta \Omega^2 \Delta \Lambda^2  \geq \frac{1}{4}{\mel{\psi}{\delta \Omega + \delta \Lambda}{\psi}}^2+ \frac{1}{4} {\mel{\psi}{\Gamma}{\psi}}^2\geq \frac{1}{4} {\mel{\psi}{\Gamma}{\psi}}^2 = \frac{1}{4} \expval{\Gamma}^2$$
+\section{Approximation method}
+\paragraph{Perturbation theory}
+Suppose we have Hamiltonian of form $$H=H_0+\lambda V$$
+$$H\ket{E_n} = E_n\ket{E_n}$$
+Suppose we can solve
+$$H_0\ket{E_n^{(0)}} = E_n^{(0)} \ket{E_n^{(0)}}$$
+Assuming $\lambda$ is small:
+$$E_n(\lambda)= E_n^{(0)} + \lambda E_n^{(1)} +\lambda^2 E_n^{(2)} + \dots $$
+$$\ket{E_n(\lambda)}= \ket{E_n^{(0)}} + \lambda \ket{E_n^{(1)} }+\lambda^2 \ket{E_n^{(2)}} + \dots $$
+Substituting into Shr\"{o}dinger equation 
+$$(H_0+\lambda V)\qty( \ket{E_n^{(0)}} + \lambda \ket{E_n^{(1)} }+\lambda^2 \ket{E_n^{(2)}} + \dots) = \qty(E_n^{(0)} + \lambda E_n^{(1)} +\lambda^2 E_n^{(2)} + \dots )\qty( \ket{E_n^{(0)}} + \lambda \ket{E_n^{(1)} }+\lambda^2 \ket{E_n^{(2)}} + \dots)$$
+Comparing coefficients between different powers of $\lambda$:
+$$H_0\ket{E_n^{(0)}} = E_n^{(0)} \ket{E_n^{(0)}}$$
+Also:
+$$\lambda H_0\ket{E_n^{(1)}} + \lambda V \ket{E_n^{(0)}}  = \lambda E_n^{(1)} \ket{E_n^{(0)}}+\lambda E_n^{(0)} \ket{E_n^{(1)}}$$
+$$\qty(H_0-E_n^{(0)})\ket{E_n^{(1)}}     =  \qty(E_n^{(1)} - V)\ket{E_n^{(0)}}  $$
+Multiplying by $\bra{E_n^{(0)}}$
+$$\mel{E_n^{(0)}}{H_0-E_n^{(0)}}{E_n^{(1)}}     =  E_n^{(1)} - \mel{E_n^{(0)}}{V}{E_n^{(0)}}  $$
+Since $\bra{E_n^{(0)}}H_0 = \bra{E_n^{(0)}}E_n^{(0)}$
+$$ E_n^{(1)} = \mel{E_n^{(0)}}{V}{E_n^{(0)}}=0$$
+i.e.,
+$$ E_n^{(1)} = \mel{E_n^{(0)}}{V}{E_n^{(0)}}$$
+Since $H_0$ is Hermitian, there is basis of its eigenvalues, and thus we an write
+$$\ket{E_n^{(1)}} = \sum_{m} c_{nm}^{(1)}\ket{E_m^{(0)}} $$
+$$\qty(H_0-E_n^{(0)})\sum_{m} c_{nm}^{(1)}\ket{E_m^{(0)}}     =  \qty(E_n^{(1)} - V)\ket{E_n^{(0)}}  $$
+$$\sum_{m}\qty(E_m^{(0)}-E_n^{(0)}) c_{nm}^{(1)}\ket{E_m^{(0)}}     =  \qty(E_n^{(1)} - V)\ket{E_n^{(0)}}  $$
+Multiplying by $\bra{E_k^{(0)}}$
+$$\sum_{m}\qty(E_m^{(0)}-E_n^{(0)}) c_{nm}^{(1)}\braket{E_k^{(0)}}{E_m^{(0)}}     =  E_n^{(1)}\braket{E_k^{(0)}}{E_n^{(0)}} - \mel{E_k^{(0)}}{V}{E_n^{(0)}}  $$
+$$\qty(E_k^{(0)}-E_n^{(0)}) c_{nk}^{(1)} = \ket{E_n^{(0)}}\delta_{nk}     - \mel{E_k^{(0)}}{V}{E_n^{(0)}}  $$
+For $n=k$:
+$$0 = \ket{E_n^{(0)}}    - \mel{E_n^{(0)}}{V}{E_n^{(0)}}  $$
+For $n\neq k$,
+$$c_{nk}^{(1)} = -\frac{\mel{E_k^{(0)}}{V}{E_n^{(0)}}}{E_k^{(0)}-E_n^{(0)}}$$
+We got, defining $V_{nm} = \mel{E_m^{(0)}}{V}{E_n^{(0)}}$, that
+$$ E_n^{(1)} = \mel{E_n^{(0)}}{V}{E_n^{(0)}} = V_{nn}$$
+$$\ket{E_n^{(1)}} = \sum_{m\neq n} \frac{V_{mn}}{E_n^{(0)}-E_m^{(0)}}\ket{E_m^{(0)}} + c_{nn}^{(1)}\ket{E_n^{(0)}} $$
+where $c_{nn}^{(1)}$ can be calculated from normalization requirements. In perturbation theory usual normalization is
+$\braket{E_n^{(0)}}{E_n^{(1)}} = 0$. Then we get
+$$\braket{E_n^{(0)}}{E_n^{(1)}} = \sum_{m\neq n} \frac{V_{mn}}{E_n^{(0)}-E_m^{(0)}}\braket{E_n^{(0)}}{E_m^{(0)}} + c_{nn}^{(1)}\braket{E_n^{(0)}}{E_n^{(0)}} = c_{nn}^{(1)} = 0$$
+\paragraph{Example}
+$$H = \frac{p^2}{2m} + \frac{1}{2}m\omega^2X^2 + \alpha X^4$$
+$$H_0 = \frac{p^2}{2m} + \frac{1}{2}m\omega^2X^2$$
+$$\ket{E_n^{(0)}} = \ket{n} \quad E_n^{(0)} = \hbar \omega\qty(n+\frac{1}{2})$$
+For $E_n^{(0)} \ll 1$ and $V=X^4$ we get
+$$E_n = E_n^{(0)} + aE_n^{(1)} + \order{\alpha^2} = \hbar \omega\qty(n+\frac{1}{2}) + \alpha \mel{n}{X^4}{n} + \order{\alpha^2}$$
+and
+$$\ket{E_n} = n + \alpha\sum_{m\neq n} \frac{\mel{m}{X^4}{n}}{\hbar \omega\qty(n-m)}\ket{m} + \order{\alpha^2}  $$
