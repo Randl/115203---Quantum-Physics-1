@@ -85,7 +85,7 @@ $$\psi_n(x) = \frac{1}{\sqrt{2^nn!}} \tilde{H}_n\qty(\sqrt{\frac{m\omega}{\hbar}
 For initial state we rewrite
 $$\psi(x,0) = \sum_n c_n \psi_n(x)$$
 and from normalization
-$$\int_{-\infty}^{\infty} \dd{x} \psi^*_{n'} (x) \psi_n(x)  = \braket{n}{n'} = \delta_{nn'}$$
+$$\delta_{nn'} = \braket{n}{n'} = \int_{-\infty}^\infty \psi^*_{n'}(x) \psi_n(x) \dd{x} = \int_{-\infty}^\infty \frac{1}{\sqrt{2^nn!}} \frac{1}{\sqrt{2^{n'}n'!}} \tilde{H}_n\qty(\sqrt{\frac{m\omega}{\hbar}}x) \tilde{H}_{n'}\qty(\sqrt{\frac{m\omega}{\hbar}}x) \qty(\frac{m\omega}{\pi \hbar})^{\frac{1}{2}} e^{-\frac{m\omega}{\hbar}x^2}\dd{x}$$
 we get
 $$c_n = \int_{-\infty}^\infty \dd{x} \psi^*(x) \psi(x,0)  $$
 And we get

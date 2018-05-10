@@ -1,0 +1,68 @@
+\section{General properties in one dimension}
+\paragraph{In one dimension, bound states are non degenerated}
+$$H = \frac{P^2}{2m} + V(x)$$
+Suppose $\psi_1$ and $\psi_2$ are two eigenvectors of eigenvalue $E$. Let's show that $\psi_1$ and $\psi_2$ are same eigenvector up to normalization. We know that
+$$\qty(\frac{P^2}{2m} + V(x)) \ket{\psi_i} = E \ket{\psi_i}$$
+Choose $i=1$, and multiply by $\psi_2$
+$$\psi_2\qty(-\frac{\hbar}{2m}\pdv[2]{x}\psi_1) + V\psi_2\psi_1 = E\psi_2\psi_1$$
+and similarly
+$$\psi_1\qty(-\frac{\hbar}{2m}\pdv[2]{x}\psi_2) + V\psi_2\psi_1 = E\psi_2\psi_1$$
+Subtracting 
+$$\psi_2 \pdv[2]{x} \psi_1 - \psi_1 \pdv[2]{x} \psi_2 = 0$$
+$$\qty(\psi_2 \pdv[2]{x} \psi_1 + \pdv{x}\psi_1\pdv{x}\psi_2) - \qty(\psi_1 \pdv[2]{x} \psi_2 + \pdv{x}\psi_1\pdv{x}\psi_2)= 0$$
+$$\pdv{x} \qty(\psi_2\pdv{x}\psi_1 - \psi_1\pdv{x}\psi_2) = 0$$
+And thus
+$$\psi_2\pdv{x}\psi_1 - \psi_1\pdv{x}\psi_2 = C$$
+Since states are bounded, $\psi_i \stackrel{x\to \pm \infty}{\longrightarrow} 0$, for $x\to \pm \infty$, $\psi_2\pdv{x}\psi_1 - \psi_1\pdv{x}\psi_2 =0$, and thus $C=0$.
+$$\psi_2\pdv{x}\psi_1 - \psi_1\pdv{x}\psi_2 = 0$$
+$$\psi_2\pdv{x}\psi_1 = \psi_1\pdv{x}\psi_2 $$
+$$\ln \psi_1 = \ln \psi_2 + \tilde{C} $$
+$$\psi_1 =  e^{\tilde{C}} \psi_2 $$
+i.e., there is no degeneracy. This is right only for one dimension and specific Hamiltonian.
+\subsection{Ehrenfest theorem and classical limit}
+$$\begin{cases}
+\dv{t} \expval{X} = \expval{\pdv{H}{P}}\\
+\dv{t} \expval{P} = -\expval{\pdv{H}{X}}\\
+\end{cases}$$
+\paragraph{Ehrenfest theorem}
+For time-independent $\Omega$ 
+$$\dv{t} \mel{\phi}{\Omega}{\psi} = -\frac{i}{\hbar} \mel{\phi}{\comm{\Omega}{H}}{\psi}$$
+\subparagraph{Proof}
+$$\dv{t} \mel{\phi}{\Omega}{\psi}  = \qty(\dv{t} \bra{\phi}) \Omega \ket{\psi} + \mel{\phi}{\dv{t}\Omega}{\psi} +  \bra{\phi} \Omega \qty(\dv{t}\ket{\psi})$$
+From Shr\"{o}dinger equation
+
+$$\dv{t} \mel{\phi}{\Omega}{\psi}  = \frac{i}{\hbar} \bra{\phi} H \Omega \ket{\psi} + \mel{\phi}{\dv{t}\Omega}{\psi} +  \frac{i}{\hbar}\bra{\phi} \Omega H\ket{\psi} =-\frac{i}{\hbar} \mel{\phi}{\comm{\Omega}{H}}{\psi} + \mel{\phi}{\dv{t}\Omega}{\psi} $$
+\paragraph{}
+For Hamiltonian of form
+$$H = \frac{P^2}{2m} + V(x)$$
+$$\dv{t}\expval{X} = -\frac{i}{\hbar} \expval{\comm{X}{H}}$$
+Since each function of operator commutes with operator
+$$\dv{t}\expval{X} = -\frac{i}{\hbar} \expval{\comm{X}{\frac{P^2}{2m}}}$$
+$$\comm{X}{P^2} =P\comm{X}{P} + \comm{X}{P}P = 2i\hbar P$$
+$$\dv{t} \expval{X} = -\frac{i}{\hbar} \frac{1}{2m} 2i\hbar \expval{P} $$
+$$\dv{t} \expval{X} =  \frac{\expval{P}}{m}   $$
+
+For more general case
+$$H(X,P) = \sum_{n,m} a_{nm} X^nP^m$$
+We want to calculate $\comm{X}{H}$
+$$\comm{X}{H} = \comm{X}{\sum_{n,m} a_{nm} X^nP^m} = \sum_{n,m} a_{nm}\comm{X}{ X^nP^m} = \sum_{n,m} a_{nm}\qty(X^n\comm{X}{ P^m}+\comm{X}{X^n }P^m)  = \sum_{n,m} a_{nm}X^n\comm{X}{ P^m}$$
+We can show by induction that $\comm{X}{ P^m} = mi\hbar P^{m-1}$ and then
+$$\comm{X}{H} =  i\hbar  \expval{\pdv{H}{P}}$$
+and
+
+$$\dv{t} \expval{X} =  \expval{\pdv{H}{P}} $$
+
+For $P$ we get $\dv{t} \expval{P} = -i\hbar \expval{\comm{P}{H}}$.
+$$\comm{P}{H} = \comm{P}{\sum_{n,m} a_{nm} X^nP^m} = \sum_{n,m} a_{nm}\comm{P}{ X^n}P^m$$
+$$\comm{P}{X} = -i\hbar$$
+By induction we can show $\comm{P}{X^n} = -ni\hbar X^{n-1}$.
+$$\comm{P}{H} = \sum_{n,m} -a_{nm}ni\hbar X^{n-1}P^m = -i\hbar \pdv{H}{X}$$
+\paragraph{} Take a look at $H = \frac{P^2}{2m} + V(X)$ such that $\pdv{H}{X} = V'(X)$. Define $x_0 = \expval{X}$ such that
+$$V'(X) = V'(x_0) I + (X-Ix_0)V''(x_0) + \frac{1}{2}(X-Ix_0)^2V'''(x_0) + \dots$$
+We want to compare $V'(\expval{X})$ and $\expval{V'(X)}$.
+$$\expval{V'(X)} = V'(x_0) + (x_0-x_0)V''(x_0) + \frac{1}{2} \Delta x^2 V'''(x_0)+\dots = V'(x_0) +\frac{1}{2} \Delta x^2 V'''(x_0)+\dots$$
+
+We've got that classical equations can be applied if $\Delta x^2$ is small.
+\paragraph{Uncertainty principle}
+We'll show that for $\Omega$ and $\Lambda$ such that $\comm{\Omega}{\Lambda} = i \uparrow$ 
+$$\Delta \Omega^2 \Delta \Lambda^2 = \frac{1}{4} \expval{\uparrow}^2$$
